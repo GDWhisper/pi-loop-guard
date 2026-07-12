@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/pi-loop-guard)](https://www.npmjs.com/package/pi-loop-guard)
 
-[中文](README.md) | [English](README_en.md)
+[中文](README.md) | English
 
 Detects when pi's LLM gets stuck repeating the same tool calls and breaks the loop before it wastes tokens.
 

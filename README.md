@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/pi-loop-guard)](https://www.npmjs.com/package/pi-loop-guard)
 
-[中文](README.md) | [English](README_en.md)
+中文 | [English](README_en.md)
 
 检测 pi 的 LLM 是否陷入重复工具调用循环，并在浪费 token 之前强制中断。
 
