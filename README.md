@@ -54,4 +54,6 @@ Models sometimes loop — especially with tool-calling. Even with good prompting
 
 ## License
 
-MIT
+MIT License
+
+Copyright (c) 2026 GDWhisper

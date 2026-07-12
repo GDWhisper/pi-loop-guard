@@ -54,4 +54,6 @@ pi-loop-guard 监控每一轮对话，检测两种循环模式：
 
 ## 开源协议
 
-MIT
+MIT License
+
+Copyright (c) 2026 GDWhisper
