@@ -2,30 +2,30 @@
 
 [![npm](https://img.shields.io/npm/v/pi-loop-guard)](https://www.npmjs.com/package/pi-loop-guard)
 
-Detects when pi's LLM gets stuck repeating the same tool calls and breaks the loop before it wastes tokens.
+[中文](README.md) | [English](README_en.md)
 
-[中文版](README.zh.md)
+检测 pi 的 LLM 是否陷入重复工具调用循环，并在浪费 token 之前强制中断。
 
-## Quick Install
+## 快速安装
 
 ```bash
 pi install npm:pi-loop-guard
 ```
 
-## What It Does
+## 它能做什么
 
-pi-loop-guard monitors every turn and watches for two loop patterns:
+pi-loop-guard 监控每一轮对话，检测两种循环模式：
 
-| Pattern | Example |
-|---------|---------|
-| **Consecutive** | `AAAA` — same tool + same args, turn after turn |
-| **Alternating** | `ABABAB` — two calls bouncing back and forever |
+| 模式 | 示例 |
+|------|------|
+| **连续重复** | `AAAA` — 连续多轮调用相同工具 + 相同参数 |
+| **交替重复** | `ABABAB` — 两个调用来回交替，永不停止 |
 
-When a loop is detected, pi-loop-guard injects a steering message telling the model to either try a different approach or stop and report results.
+检测到循环后，pi-loop-guard 会向模型注入一条引导消息，要求它尝试不同方法，或停止并汇报结果。
 
-## Configuration
+## 配置
 
-Create `.pi/loop-guard.json` in your project root (optional):
+在项目根目录创建 `.pi/loop-guard.json`（可选）：
 
 ```json
 {
@@ -35,24 +35,24 @@ Create `.pi/loop-guard.json` in your project root (optional):
 }
 ```
 
-| Option | Default | Description |
-|--------|---------|-------------|
-| `maxRepeats` | `5` | Number of identical turns before triggering |
-| `windowSize` | `5` | How many recent turns to check |
-| `enabled` | `true` | Set `false` to disable without uninstalling |
+| 选项 | 默认值 | 说明 |
+|------|--------|------|
+| `maxRepeats` | `5` | 连续多少轮相同调用后触发 |
+| `windowSize` | `5` | 回溯检查最近多少轮 |
+| `enabled` | `true` | 设为 `false` 可临时禁用 |
 
-## Why Not Just Rely on the Model?
+## 为什么模型自己不会停？
 
-Models sometimes loop — especially with tool-calling. Even with good prompting, a model can call `read` on the same file 10+ times when confused. pi-loop-guard is a safety net that costs nothing when there's no loop and saves tokens when there is.
+即使提示写得再好，模型在工具调用场景下也可能陷入循环 —— 尤其当它对结果困惑时，可能会连续读取同一个文件十几次。pi-loop-guard 是一个低成本的安全网：没有循环时不产生任何开销，检测到循环时立刻止损。
 
-## How It Works
+## 工作原理
 
-1. On each `turn_end`, extract the tool calls from the assistant message
-2. Compare against recent turn history (up to `windowSize` turns back)
-3. If `maxRepeats` identical turns are found (consecutive or alternating), inject a steering message and reset history
-4. On `session_shutdown`, clear history
+1. 每次 `turn_end` 时，提取助手消息中的工具调用
+2. 与最近 `windowSize` 轮的历史记录比较
+3. 如果发现 `maxRepeats` 轮相同的调用（连续或交替），注入引导消息并重置历史
+4. `session_shutdown` 时清空历史
 
-## License
+## 开源协议
 
 MIT License
 

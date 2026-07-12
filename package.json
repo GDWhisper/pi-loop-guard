@@ -17,7 +17,7 @@
   "files": [
     "extensions/",
     "README.md",
-    "README.zh.md"
+    "README_en.md"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
