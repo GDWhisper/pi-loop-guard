@@ -1,6 +1,6 @@
 {
   "name": "pi-loop-guard",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Pi coding agent extension that detects repeating tool-call loops and breaks them before they waste tokens.",
   "keywords": [
     "pi-package",
