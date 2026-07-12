@@ -1,0 +1,28 @@
+{
+  "name": "pi-loop-guard",
+  "version": "1.0.0",
+  "description": "Pi coding agent extension that detects repeating tool-call loops and breaks them before they waste tokens.",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "loop-detection",
+    "agent-guard",
+    "llm-tools"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GDWhisper/pi-loop-guard"
+  },
+  "files": [
+    "extensions/",
+    "README.md",
+    "README.zh.md"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  }
+}
